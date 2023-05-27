@@ -36,7 +36,7 @@ function dateTime(dt, timezone){
         hour: "numeric",
         minute: "numeric",
         timeZone: `Etc/GMT${convertTimezone >= 0 ? "-" : "+"}${Math.abs(convertTimezone)}`,
-        hour24: true,
+        hour12: true,
     }
 
     return dateTime.toLocaleString("en-US", option)
