@@ -102,7 +102,7 @@ async function getWeather(){
     sunriseNow.innerHTML = convertSunrise(weatherSunrise); 
     sunsetNow.innerHTML = convertSunset(weatherSunset); 
    
-
+    // IF
     if(weatherCondition === "Clouds"){
         imgCondition.src = "https://img.icons8.com/external-dreamcreateicons-flat-dreamcreateicons/100/external-cloudy-weather-dreamcreateicons-flat-dreamcreateicons.png";
     }else if(weatherCondition === "Clear"){
