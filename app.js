@@ -29,38 +29,38 @@ function dateTime(dt, timezone){
     const dateTime = new Date(dt * 1000);
 
     const option = {
-        weekday : "long",
-        day : "numeric",
-        month : "long",
-        year : "numeric",
-        timeZone : `Etc/GMT${convertTimezone >= 0 ? "-" : "+"}${Math.abs(convertTimezone)}`,
-        hour12 : true,
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        timeZone: `Etc/GMT${convertTimezone >= 0 ? "-" : "+"}${Math.abs(convertTimezone)}`,
+        hour24: true,
     }
 
     return dateTime.toLocaleString("en-US", option)
 }
 
-function convertSunrise(sunrise){
+function convertSunrise(sunrise) {
     const date = new Date(sunrise * 1000);
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    const formattedHours = hours % 12 || 12;
+    const formattedHours = hours.toString().padStart(2, '0');
     const formattedMinutes = minutes.toString().padStart(2, '0');
-    const ConvertedSunrise = `${formattedHours}:${formattedMinutes} ${ampm}`;
-    return ConvertedSunrise;
-}
-
-function convertSunset(sunset){
+    const convertedSunrise = `${formattedHours}:${formattedMinutes}`;
+    return convertedSunrise;
+  }
+  
+  function convertSunset(sunset) {
     const date = new Date(sunset * 1000);
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    const formattedHours = hours % 12 || 12;
+    const formattedHours = hours.toString().padStart(2, '0');
     const formattedMinutes = minutes.toString().padStart(2, '0');
-    const ConvertedSunrise = `${formattedHours}:${formattedMinutes} ${ampm}`;
-    return ConvertedSunrise;
-}
+    const convertedSunset = `${formattedHours}:${formattedMinutes}`;
+    return convertedSunset;
+  }
 
 async function getWeather(){
     // Catturo i dati
@@ -81,6 +81,7 @@ async function getWeather(){
     let weatherCondition = weather.weather[0].main;
     let weatherSunrise = weather.sys.sunrise;
     let weatherSunset = weather.sys.sunset;
+    console.log(weatherSunset);
     let weatherDt = weather.dt;
     let weatherTimezone = weather.timezone;
 
@@ -91,8 +92,8 @@ async function getWeather(){
     cityNameNow.innerHTML = `${weatherName}, ${weatherCountry}`;
     cityDegreed.innerHTML = `${weatherTemp} °`;
     cityCondition.innerHTML=`${weatherCondition}`;
-    date.innerHTML = dateTime(weatherDt, weatherTimezone);
-    
+    date.innerHTML = dateTime(weatherDt, weatherTimezone); 
+    console.log(date);  
     wind.innerHTML = `${weatherSpeed}m/s`;
     humidity.innerHTML = `${weatherHumidity}%`;
     feels.innerHTML = `${weatherFeels}°c`;
@@ -103,7 +104,7 @@ async function getWeather(){
    
 
     if(weatherCondition === "Clouds"){
-        imgCondition.src = "https://img.icons8.com/office/70/partly-cloudy-day--v1.png";
+        imgCondition.src = "https://img.icons8.com/external-dreamcreateicons-flat-dreamcreateicons/100/external-cloudy-weather-dreamcreateicons-flat-dreamcreateicons.png";
     }else if(weatherCondition === "Clear"){
         imgCondition.src = "https://img.icons8.com/office/70/sun--v1.png"
     }else if(weatherCondition === "Rain"){
