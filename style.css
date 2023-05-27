@@ -265,4 +265,12 @@ body{
         margin-top: 20px;
         border-radius: 20px;
     }
+
+    .air{
+        display: none;
+    }
+
+    .five_day{
+        display: none;
+    }
 }
