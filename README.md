@@ -10,3 +10,6 @@ Meteo.io è un progetto di un sito meteo che utilizza l'API di OpenWeather per o
 ## Live Demo
 
 https://davidebenedetti95.github.io/Meteo.io/
+
+Alternative Link
+https://meteo-io.vercel.app
